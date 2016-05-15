@@ -1,0 +1,2 @@
+gcc -m32 -ffreestanding -c $1 -o obj/$2
+objcopy -O binary -j .text obj/$2 bin/$3
