@@ -32,8 +32,8 @@ CODE_SEG equ 8
 DATA_SEG equ 16
 
 ; new location of the GDT is in ecx
-global SetupFlatGdt
-SetupFlatGdt:
+global SetupFlatGdt_asm
+SetupFlatGdt_asm:
 	cli
 	
 	push ecx
@@ -41,8 +41,8 @@ SetupFlatGdt:
 	mov eax, ecx
 	mov ebx, GDT_START
 	mov ecx, GDT_DESCRIPTOR_END - GDT_START
-	extern gr_memcpy
-	call gr_memcpy
+	extern memcpy_asm
+	call memcpy_asm
 	
 	pop ecx
 	mov eax, ecx

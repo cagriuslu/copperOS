@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-void* gr_memcpy(void* __restrict, const void* __restrict, size_t);
+void* memcpy_asm(void* __restrict, const void* __restrict, size_t);
 
 #ifdef __cplusplus
 }

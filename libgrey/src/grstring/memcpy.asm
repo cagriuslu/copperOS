@@ -3,8 +3,8 @@
 ; dest : eax
 ; src  : ebx
 ; n    : ecx
-global gr_memcpy
-gr_memcpy:
+global memcpy_asm
+memcpy_asm:
 	cmp ecx, 0
 	je .return
 .loop:
