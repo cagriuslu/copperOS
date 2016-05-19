@@ -1,5 +1,5 @@
-#ifndef _GRGDT_H
-#define _GRGDT_H
+#ifndef _TGDT_H
+#define _TGDT_H
 
 void __attribute__ ((fastcall)) SetupFlatGdt_asm(void *location);
 

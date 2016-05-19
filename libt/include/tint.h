@@ -1,5 +1,5 @@
-#ifndef _GREYINT_H
-#define _GREYINT_H
+#ifndef _TINT_H
+#define _TINT_H
 
 #define byte unsigned char
 #define word unsigned short

@@ -1,5 +1,5 @@
-#ifndef _GR_STRING_H
-#define _GR_STRING_H
+#ifndef _TSTRING_H
+#define _TSTRING_H
 
 #include <stddef.h>
 

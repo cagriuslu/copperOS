@@ -61,7 +61,5 @@ SetupFlatGdt_asm:
 	mov fs, eax
 	mov gs, eax
 	
-	sti
-	
+;	sti
 	ret
-
