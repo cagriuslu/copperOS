@@ -1,23 +1,31 @@
-[org 0x7c00]
-[BITS 16]
-	
-	; save boot drive
-	mov [BOOT_DRIVE], dl
+MBALIGN		equ 1<<0
+MEMINFO		equ 1<<1
+FLAGS		equ MBALIGN | MEMINFO
+MAGIC		equ 0x1BADB002
+CHECKSUM	equ -(MAGIC + FLAGS)
 
-	; init stack
-	mov bp, 0x8000
-	mov sp, bp
-	
-	jmp pm
-	
-BOOT_DRIVE: db 0
+section .multiboot
+align 4
+	dd MAGIC
+	dd FLAGS
+	dd CHECKSUM
 
-%include "pm.asm"
+section .bootstrapStack, nobits
+align 4
+stackTop:
+	resb 16384
+stackBottom:
 
-[BITS 32]
-main:
-	mov byte [0xb8000], 'X'
+section .text
+global _start
+_start:
+	mov ebp, stackBottom
+	mov esp, stackBottom
+	
+	extern	StartKernel
+	call	StartKernel
+	
+	cli
+	hlt
 	jmp $
 
-times 510-($-$$) db 0 
-db 0x55,0xaa

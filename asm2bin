@@ -1,2 +1,0 @@
-nasm -f bin $1 -o bin/$2
-
