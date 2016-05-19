@@ -1,2 +1,2 @@
-qemu-system-i386 -curses -kernel grey.bin
+qemu-system-i386 -kernel grey.bin
 
