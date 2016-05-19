@@ -4,14 +4,13 @@
 
 void StartKernel()
 {
-
-	SetupFlatGdt_asm((void*) 0x100000);
 	
-	tClearTerm();
-	tPrintChar('A');
-	tPrintChar('A');
-	tPrintChar('A');
 	
-//	char *vgaBuffer = (char*) 0xb8000;
-//	*vgaBuffer = 'X';
+	//SetupFlatGdt_asm((void*) 0x100000);
+	
+	//tClearTerm();
+	//tPrintStr("\nThis is tOS.\n");
+	//tPrintStr("Your magic number is ");
+	//tPrintDword(0x38574910);
+	//tPrintStr(".\n");
 }

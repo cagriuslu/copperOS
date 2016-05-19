@@ -31,6 +31,17 @@ _start:
 	inc dx
 	out dx, al
 	
+	extern tPrintDword
+	extern tPrintWord
+	extern tPrintChar
+	sgdt [.temp]
+	mov cx, [.temp]
+	call tPrintWord
+	mov cx, 10
+	call tPrintChar
+	mov ecx, [.temp+2]
+	call tPrintDword
+	
 	extern	StartKernel
 	call	StartKernel
 	
@@ -38,3 +49,6 @@ _start:
 	hlt
 	jmp $
 
+.temp:
+	dq 0
+	dq 0
