@@ -3,8 +3,8 @@
 ; dest : eax
 ; src  : ebx
 ; n    : ecx
-global memcpy_asm
-memcpy_asm:
+global asmMemCopy
+asmMemCopy:
 	cmp ecx, 0
 	je .return
 .loop:

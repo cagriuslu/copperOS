@@ -10,17 +10,19 @@ align 4
 	dd FLAGS
 	dd CHECKSUM
 
-section .bootstrapStack, nobits
-align 4
-stackTop:
-	resb 16384
-stackBottom:
-
 section .text
 global _start
 _start:
-	mov ebp, stackBottom
-	mov esp, stackBottom
+	cli
+	
+	; set kernel stack
+	mov ebp, 0x200000
+	mov esp, 0x200000
+	
+	; setup flat gdt
+	mov ecx, 0x100000
+	extern asmFlatGdt
+	call asmFlatGdt
 	
 	; disable VGA cursor
 	mov al, 0x0a
@@ -31,24 +33,9 @@ _start:
 	inc dx
 	out dx, al
 	
-	extern tPrintDword
-	extern tPrintWord
-	extern tPrintChar
-	sgdt [.temp]
-	mov cx, [.temp]
-	call tPrintWord
-	mov cx, 10
-	call tPrintChar
-	mov ecx, [.temp+2]
-	call tPrintDword
-	
-	extern	StartKernel
-	call	StartKernel
+	extern StartKernel
+	call StartKernel
 	
 	cli
 	hlt
 	jmp $
-
-.temp:
-	dq 0
-	dq 0

@@ -32,27 +32,27 @@ CODE_SEG equ 8
 DATA_SEG equ 16
 
 ; new location of the GDT is in ecx
-global SetupFlatGdt_asm
-SetupFlatGdt_asm:
+global asmFlatGdt
+asmFlatGdt:
 	cli
 	
 	push ecx
 	
+	; write GDT_START_ADDRESS before copying
+	mov [GDT_START_ADDRESS], ecx
+	
 	mov eax, ecx
 	mov ebx, GDT_START
 	mov ecx, GDT_DESCRIPTOR_END - GDT_START
-	extern memcpy_asm
-	call memcpy_asm
+	extern asmMemCopy
+	call asmMemCopy
 	
 	pop ecx
-	mov eax, ecx
-	add eax, GDT_START_ADDRESS - GDT_START
-	mov [eax], ecx
-	
 	add ecx, GDT_DESCRIPTOR - GDT_START
 	lgdt [ecx]
-
+	
 	jmp CODE_SEG:.continue
+	
 .continue:
 	mov eax, DATA_SEG
 	mov ds, eax
@@ -62,4 +62,6 @@ SetupFlatGdt_asm:
 	mov gs, eax
 	
 ;	sti
+;	do no uncomment yet
+	
 	ret
