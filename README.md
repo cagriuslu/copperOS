@@ -58,6 +58,7 @@ cd ..
 
 Now, you should be able to use `i386-elf-gcc` to cross-compile.
 
+--
 
-
+The development of this project is currently suspended.
 

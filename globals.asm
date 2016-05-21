@@ -1,3 +1,5 @@
+; these are variables that can be accessed by the kernel, their locations on the memory is fixed
+
 section .globals
 
 global KernelName
@@ -12,8 +14,3 @@ global CurrentProcess
 CurrentProcess:
 	dd	0
 
-
-
-
-
-;times memsize-$-KernelName db 0

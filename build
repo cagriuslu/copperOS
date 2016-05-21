@@ -15,8 +15,6 @@ AS="nasm"
 AS_FLAGS="-felf32"
 $AS $AS_FLAGS boot.asm -o boot.o
 $AS $AS_FLAGS gdt.asm -o gdt.o
-$AS $AS_FLAGS idt.asm -o idt.o
-$AS $AS_FLAGS stack.asm -o stack.o
 $AS $AS_FLAGS mem.asm -o mem.o
 $AS $AS_FLAGS globals.asm -o globals.o
 

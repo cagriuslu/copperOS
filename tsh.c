@@ -3,7 +3,5 @@
 
 void tsh_main()
 {
-	tClearTerm();
-	tPrintStr("Welcome to tsh!\n");
 	tPrintChar('$');
 }

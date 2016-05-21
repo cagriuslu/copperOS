@@ -4,10 +4,7 @@
 void StartKernel()
 {
 	tClearTerm();
+	tPrintStr("This is tOS.\n");
 	
-	if (CurrentProcess == 0)
-	{
-		CurrentProcess = 1;
-		tsh_main();
-	}
+	tsh_main();
 }

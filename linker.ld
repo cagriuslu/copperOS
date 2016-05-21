@@ -1,10 +1,13 @@
-
+/* entry point of the kernel is _start */
 ENTRY(_start)
 
 SECTIONS
 {
+	/* put the kernel wide global variables here */
 	. = 0x180800;
 	.globals : { *(.globals) }
+	
+	/* put the kernel's stack above this point */
 	
 	. = 2M;
 	

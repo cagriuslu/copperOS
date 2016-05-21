@@ -62,6 +62,6 @@ asmFlatGdt:
 	mov gs, eax
 	
 ;	sti
-;	do no uncomment yet
+;	do not enable interrupts yet
 	
 	ret

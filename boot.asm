@@ -4,12 +4,14 @@ FLAGS		equ MBALIGN | MEMINFO
 MAGIC		equ 0x1BADB002
 CHECKSUM	equ -(MAGIC + FLAGS)
 
+; multiboot header
 section .multiboot
 align 4
 	dd MAGIC
 	dd FLAGS
 	dd CHECKSUM
 
+; entry point of the kernel
 section .text
 global _start
 _start:
