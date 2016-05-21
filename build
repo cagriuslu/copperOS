@@ -21,14 +21,15 @@ $AS $AS_FLAGS mem.asm -o mem.o
 $AS $AS_FLAGS globals.asm -o globals.o
 
 CC="i386-elf-gcc"
-CC_INC_DIRS="-Ilibc/include -Ilibt/include"
+CC_INC_DIRS="-Ilibc/include -Ilibt/include -I."
 C_FLAGS="-ffreestanding -O2 -Wall -Wextra $CC_INC_DIRS"
 $CC $C_FLAGS -c kernel.c -o kernel.o
+$CC $C_FLAGS -c tsh.c -o tsh.o
 
 # Link
 LD="i386-elf-gcc"
 LD_LIB_DIRS="-Llibc/lib -Llibt/lib"
 LD_FLAGS="-T linker.ld -ffreestanding -O2 -nostdlib $LD_LIB_DIRS"
 LD_LIBS="-lgcc -lc -lt"
-OBJS="boot.o gdt.o idt.o stack.o mem.o globals.o kernel.o"
+OBJS="boot.o gdt.o idt.o stack.o mem.o globals.o kernel.o tsh.o"
 $LD $LD_FLAGS -o t.bin $OBJS $LD_LIBS
